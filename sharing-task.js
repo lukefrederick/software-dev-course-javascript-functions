@@ -12,6 +12,8 @@ reusable functions that solve specific tasks. This activity encourages:
 - Knowledge sharing
 */
 
+const { isValidElement } = require("react");
+
 // ============================================
 // 🎉 Scenario:
 // Your bootcamp is organizing an event to showcase projects.
@@ -37,6 +39,17 @@ reusable functions that solve specific tasks. This activity encourages:
 // 4. Return the result.
 
 
+function capitalizeFirstLetter(word) {
+    return word[0].toUpperCase() + word.slice(1);
+}
+
+function generateBadge(name, role) {
+    return `Name: ${capitalizeFirstLetter(name)}, Role: ${capitalizeFirstLetter(role)}`;
+}
+
+// console.log(generateBadge("luke", "cohort"))
+
+
 // ============================================
 // 🧩 Task 2: Calculate Event Cost
 // ============================================
@@ -52,6 +65,30 @@ reusable functions that solve specific tasks. This activity encourages:
 // 4. Return the final total.
 
 
+function calculateCost(attendeeNumber, costPerAttendee) {
+    return costPerAttendee * attendeeNumber;
+}
+
+function checkDiscount(attendees, costPerAttendee) {
+    return attendees > 100;
+}
+
+function applyDiscount(cost) {
+    return cost * 0.9;
+}
+
+
+function calculateTotalCost (attendees, singleCost) {
+    let baseCost = calculateCost(attendees, singleCost);
+    if(checkDiscount) {
+        baseCost = applyDiscount(baseCost);
+    }
+    return baseCost;
+}
+
+// console.log("101 attendees price: " + calculateCost(101));
+// console.log("99 attendees price: " + calculateCost(99));
+
 // ============================================
 // 🧩 Task 3: Validate Email
 // ============================================
@@ -63,6 +100,36 @@ reusable functions that solve specific tasks. This activity encourages:
 // Steps:
 // 1. Check if the string includes both "@" and ".".
 // 2. Return true or false accordingly.
+
+/*
+function validateEmail(email) {
+
+    if(email.includes('.') && email.includes('@')) {
+        return true;
+    }
+    return false;
+}
+*/
+
+function checkForPeriod(email) {
+    return email.includes('.');
+}
+
+function checkForAt(email) {
+    return email.includes('@');
+}
+
+function validateEmail(email) {
+    if (checkForPeriod(email) && checkForAt(email) {
+        return true;
+    }
+    return false;
+}
+
+
+// console.log("Test no . " + validateEmail("asdf@"))
+// console.log("Test no @ " + validateEmail("asdf."));
+// console.log("With all: " + validateEmail("test@gmail.com"))
 
 
 // ============================================
